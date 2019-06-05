@@ -198,6 +198,18 @@
 <script>
   $(function(){
     $.showLoading("加载中...");
+    _token = localStorage.getItem('token');
+    if(!_token){
+      $.confirm("您尚未登录,请登录", function() {
+        //点击确认后的回调函数
+        window.location.href = 'login.html';
+        }, function() {
+        //点击取消后的回调函数
+        });
+      }
+      setTimeout(function(){
+        localStorage.clear();
+      },1000 * 600)
   })
   document.onreadystatechange = function() {
     if(document.readyState =='complete'){
