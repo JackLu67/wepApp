@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>麻城国土资源局-注册</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/register.css">
+</head>
+<body>
+  <div class="register-wrapper">
+    <header>
+      <div class="left">
+        <a href="javascript:history.back(-1)">
+          <img src="images/back.png" alt="" width="30" height="30">
+        </a>
+      </div>
+      <div class="center">
+        <span>用户注册</span>
+      </div>
+      <div class="right">
+        <a href="login.html">
+          <img src="images/my1.png" alt="" width="26" height="26">
+        </a>
+      </div>
+    </header>
+    <form action="" id="registerForm">
+      <div class="ipt-wrapper">
+        <div>
+          <input type="text" placeholder="请输入身份证号" name="idCardNumber">
+        </div>
+        <div>
+          <input type="text" placeholder="请输入用户名" name="userName">
+        </div>
+        <div>
+          <input type="text" placeholder="请输入11位手机号" name="phoneNumber">
+        </div>
+        <div>
+          <input type="password" placeholder="密码必须6到12位,包含数字和字母" name="password">
+        </div>
+        <div>
+          <input type="text" placeholder="请输入邮箱" name="email">
+        </div>
+      </div>
+    </form>
+    <div class="login">
+      <div>
+        <button class="register-btn" onclick="register()">注册</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/base.js"></script>
+<script src="js/flex.js"></script>
+<script>
+  $(function(){
+    $('input').blur(function(){
+      window.scroll(0,0);
+    })
+  })
+  function register() {
+    var arr = {};
+    arr.idCardNumber = $('input').eq(0).val();
+    arr.userName = $('input').eq(1).val();
+    arr.phoneNumber = $('input').eq(2).val();
+    arr.password = $('input').eq(3).val();
+    arr.email = $('input').eq(4).val();
+    if($.validate(arr) == true){
+      layer.msg('注册成功', {icon: 1,time: 2000,shade : [0.5 , '#000' , true]});
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1000);
+    }
+  }
+</script>
+</html>
